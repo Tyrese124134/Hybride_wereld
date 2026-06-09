@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Drawing Moderation System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<div class="container">
+
+    <!-- ================================= -->
+    <!-- HEADER -->
+    <!-- ================================= -->
+
+    <div class="header">
+
+        <div class="header-top">
+
+            <div>
+
+                <h1>
+                    AI Drawing Moderation
+                </h1>
+
+                <p>
+                    Smart AI moderation for drawings,
+                    sketches and scanned images
+                </p>
+
+            </div>
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                System Online
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================================= -->
+    <!-- DASHBOARD STATS -->
+    <!-- ================================= -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <h3>
+                Total Logs
+            </h3>
+
+            <p>
+                {{ logs|length }}
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+                AI Status
+            </h3>
+
+            <p class="green-text">
+                Active
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+                Retraining
+            </h3>
+
+            <p class="yellow-text">
+                Ready
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ================================= -->
+    <!-- TABS -->
+    <!-- ================================= -->
+
+    <div class="tabs">
+
+        <button
+            class="tab-btn active"
+            onclick="showTab(event, 'upload-tab')"
+        >
+            Upload
+        </button>
+
+        <button
+            class="tab-btn"
+            onclick="showTab(event, 'draw-tab')"
+        >
+            Draw
+        </button>
+
+    </div>
+
+    <!-- ================================= -->
+    <!-- UPLOAD TAB -->
+    <!-- ================================= -->
+
+    <div
+        id="upload-tab"
+        class="tab-content active"
+    >
+
+        <div class="card">
+
+            <h2>
+                Upload Drawing
+            </h2>
+
+            <form id="uploadForm">
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/*"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="main-btn"
+                >
+                    Analyze Drawing
+                </button>
+
+            </form>
+
+            <div
+                id="uploadResult"
+                class="result-box"
+            ></div>
+
+        </div>
+
+    </div>
+
+    <!-- ================================= -->
+    <!-- DRAW TAB -->
+    <!-- ================================= -->
+
+    <div
+        id="draw-tab"
+        class="tab-content"
+    >
+
+        <div class="card">
+
+            <h2>
+                Draw Live
+            </h2>
+
+            <canvas
+                id="drawingCanvas"
+                width="500"
+                height="400"
+            ></canvas>
+
+            <div class="canvas-buttons">
+
+                <button
+                    onclick="clearCanvas()"
+                    class="secondary-btn"
+                >
+                    Clear
+                </button>
+
+                <button
+                    onclick="analyzeCanvas()"
+                    class="main-btn"
+                >
+                    Analyze Drawing
+                </button>
+
+            </div>
+
+            <div
+                id="drawResult"
+                class="result-box"
+            ></div>
+
+        </div>
+
+    </div>
+
+    <!-- ================================= -->
+    <!-- LOGS -->
+    <!-- ================================= -->
+
+    <div class="logs-section">
+
+        <div class="logs-header">
+
+            <h2>
+                Moderation History
+            </h2>
+
+            <button
+                class="refresh-btn"
+                onclick="location.reload()"
+            >
+                Refresh
+            </button>
+
+        </div>
+
+        <div class="logs-grid">
+
+            {% for log in logs %}
+
+            <div class="log-card">
+
+                <img
+                    src="{{ log.image_url }}"
+                    class="log-image"
+                >
+
+                <div class="log-info">
+
+                    <div class="status-row">
+
+                        <span class="
+                            badge
+                            {% if log.prediction == 'safe' %}
+                                safe-badge
+                            {% elif log.prediction == 'review_required' %}
+                                review-badge
+                            {% else %}
+                                unsafe-badge
+                            {% endif %}
+                        ">
+
+                            {{ log.prediction }}
+
+                        </span>
+
+                        {% if log.reviewed %}
+
+                        <span class="reviewed-tag">
+                            reviewed
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="confidence-bar">
+
+                        <div
+                            class="confidence-fill"
+                            style="
+                                width:
+                                {{ log.confidence * 100 }}%;
+                            "
+                        ></div>
+
+                    </div>
+
+                    <p class="confidence-text">
+
+                        Confidence:
+                        {{ log.confidence }}
+
+                    </p>
+
+                    <p class="log-time">
+                        {{ log.time }}
+                    </p>
+
+                    {% if log.corrected_label %}
+
+                    <p class="corrected-label">
+
+                        Corrected:
+                        {{ log.corrected_label }}
+
+                    </p>
+
+                    {% endif %}
+
+                    <div class="log-buttons">
+
+                        <button
+                            class="feedback-safe"
+                            onclick="
+                            feedbackImage(
+                                '{{ log.filename }}',
+                                'safe'
+                            )"
+                        >
+                            Mark Safe
+                        </button>
+
+                        <button
+                            class="feedback-unsafe"
+                            onclick="
+                            feedbackImage(
+                                '{{ log.filename }}',
+                                'unsafe'
+                            )"
+                        >
+                            Mark Unsafe
+                        </button>
+
+                        <button
+                            class="delete-btn"
+                            onclick="
+                            deleteLog(
+                                '{{ log.filename }}'
+                            )"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================= -->
+
+<script>
+
+    // =================================
+    // TAB SWITCHING
+    // =================================
+
+    function showTab(event, tabId) {
+
+        document
+            .querySelectorAll(".tab-content")
+            .forEach(tab => {
+
+                tab.classList.remove("active")
+
+            })
+
+        document
+            .querySelectorAll(".tab-btn")
+            .forEach(btn => {
+
+                btn.classList.remove("active")
+
+            })
+
+        document
+            .getElementById(tabId)
+            .classList.add("active")
+
+        event.target.classList.add("active")
+    }
+
+    // =================================
+    // FILE UPLOAD
+    // =================================
+
+    document
+        .getElementById("uploadForm")
+        .addEventListener(
+            "submit",
+            async function(e) {
+
+                e.preventDefault()
+
+                const file =
+                    document
+                    .getElementById("fileInput")
+                    .files[0]
+
+                const formData =
+                    new FormData()
+
+                formData.append(
+                    "file",
+                    file
+                )
+
+                const response =
+                    await fetch(
+                        "/predict",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    )
+
+                const data =
+                    await response.json()
+
+                renderPrediction(
+                    "uploadResult",
+                    data
+                )
+            }
+        )
+
+    // =================================
+    // CANVAS
+    // =================================
+
+    const canvas =
+        document.getElementById(
+            "drawingCanvas"
+        )
+
+    const ctx =
+        canvas.getContext("2d")
+
+    let drawing = false
+
+    // white background
+
+    ctx.fillStyle = "white"
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    )
+
+    // =================================
+    // MOUSE DOWN
+    // =================================
+
+    canvas.addEventListener(
+        "mousedown",
+        (event) => {
+
+            drawing = true
+
+            const rect =
+                canvas.getBoundingClientRect()
+
+            const scaleX =
+                canvas.width / rect.width
+
+            const scaleY =
+                canvas.height / rect.height
+
+            const x =
+                (event.clientX - rect.left)
+                * scaleX
+
+            const y =
+                (event.clientY - rect.top)
+                * scaleY
+
+            ctx.beginPath()
+
+            ctx.moveTo(x, y)
+        }
+    )
+
+    // =================================
+    // MOUSE UP
+    // =================================
+
+    canvas.addEventListener(
+        "mouseup",
+        () => {
+
+            drawing = false
+
+            ctx.beginPath()
+        }
+    )
+
+    // =================================
+    // DRAW
+    // =================================
+
+    canvas.addEventListener(
+        "mousemove",
+        draw
+    )
+
+    function draw(event) {
+
+        if (!drawing) return
+
+        const rect =
+            canvas.getBoundingClientRect()
+
+        const scaleX =
+            canvas.width / rect.width
+
+        const scaleY =
+            canvas.height / rect.height
+
+        const x =
+            (event.clientX - rect.left)
+            * scaleX
+
+        const y =
+            (event.clientY - rect.top)
+            * scaleY
+
+        ctx.lineWidth = 5
+
+        ctx.lineCap = "round"
+
+        ctx.strokeStyle = "black"
+
+        ctx.lineTo(x, y)
+
+        ctx.stroke()
+
+        ctx.beginPath()
+
+        ctx.moveTo(x, y)
+    }
+
+    // =================================
+    // CLEAR CANVAS
+    // =================================
+
+    function clearCanvas() {
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        )
+
+        ctx.fillStyle = "white"
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        )
+    }
+
+    // =================================
+    // ANALYZE DRAWING
+    // =================================
+
+    async function analyzeCanvas() {
+
+        canvas.toBlob(
+
+            async function(blob) {
+
+                const formData =
+                    new FormData()
+
+                formData.append(
+                    "file",
+                    blob,
+                    "drawing.png"
+                )
+
+                const response =
+                    await fetch(
+                        "/predict",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    )
+
+                const data =
+                    await response.json()
+
+                renderPrediction(
+                    "drawResult",
+                    data
+                )
+            }
+        )
+    }
+
+    // =================================
+    // RENDER PREDICTION
+    // =================================
+
+    function renderPrediction(
+        elementId,
+        data
+    ) {
+
+        if (data.error) {
+
+            document
+                .getElementById(elementId)
+                .innerHTML = `
+
+                <div class="error-box">
+
+                    ${data.error}
+
+                </div>
+            `
+
+            return
+        }
+
+        let badgeClass = "unsafe-badge"
+
+        if (data.prediction === "safe") {
+
+            badgeClass = "safe-badge"
+
+        }
+
+        if (
+            data.prediction ===
+            "review_required"
+        ) {
+
+            badgeClass = "review-badge"
+        }
+
+        let warningHTML = ""
+
+        if (
+            data.prediction ===
+            "review_required"
+        ) {
+
+            warningHTML = `
+
+            <div class="review-warning">
+
+                ⚠ Manual review recommended
+
+            </div>
+            `
+        }
+
+        document
+            .getElementById(elementId)
+            .innerHTML = `
+
+            <div class="prediction-card">
+
+                <span class="badge ${badgeClass}">
+
+                    ${data.prediction}
+
+                </span>
+
+                ${warningHTML}
+
+                <h3>
+
+                    Confidence:
+                    ${data.confidence}
+
+                </h3>
+
+                <img
+                    src="${data.image_url}"
+                    class="preview-image"
+                >
+
+                <div class="feedback-buttons">
+
+                    <button
+                        class="feedback-safe"
+                        onclick="
+                        feedbackImage(
+                            '${data.filename}',
+                            'safe'
+                        )"
+                    >
+                        Correct Safe
+                    </button>
+
+                    <button
+                        class="feedback-unsafe"
+                        onclick="
+                        feedbackImage(
+                            '${data.filename}',
+                            'unsafe'
+                        )"
+                    >
+                        Correct Unsafe
+                    </button>
+
+                </div>
+
+            </div>
+        `
+    }
+
+    // =================================
+    // FEEDBACK
+    // =================================
+
+    async function feedbackImage(
+        filename,
+        label
+    ) {
+
+        await fetch(
+
+            `/feedback/${filename}/${label}`,
+
+            {
+                method: "POST"
+            }
+        )
+
+        alert(
+            "Feedback saved for retraining."
+        )
+    }
+
+    // =================================
+    // DELETE LOG
+    // =================================
+
+    async function deleteLog(filename) {
+
+        await fetch(
+
+            `/delete-log/${filename}`,
+
+            {
+                method: "DELETE"
+            }
+        )
+
+        location.reload()
+    }
+
+</script>
+
+</body>
+
+</html>

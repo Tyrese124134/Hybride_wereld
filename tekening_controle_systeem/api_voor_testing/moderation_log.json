@@ -1,0 +1,313 @@
+[
+    {
+        "filename": "1779218942.089587_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9963,
+        "time": "2026-05-19 21:29:02.239330",
+        "image_url": "/uploads/1779218942.089587_drawing.png"
+    },
+    {
+        "filename": "1779218955.850047_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.7426,
+        "time": "2026-05-19 21:29:15.886642",
+        "image_url": "/uploads/1779218955.850047_drawing.png"
+    },
+    {
+        "filename": "1779261688.851956_drawing.png",
+        "prediction": "safe",
+        "confidence": 1.0,
+        "time": "2026-05-20 09:21:29.104449",
+        "image_url": "/uploads/1779261688.851956_drawing.png",
+        "reviewed": true,
+        "corrected_label": "safe"
+    },
+    {
+        "filename": "1779269326.00308_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9997,
+        "time": "2026-05-20 11:28:46.171271",
+        "image_url": "/uploads/1779269326.00308_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779269371.229582_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9976,
+        "time": "2026-05-20 11:29:31.393369",
+        "image_url": "/uploads/1779269371.229582_drawing.png",
+        "reviewed": true,
+        "corrected_label": "safe"
+    },
+    {
+        "filename": "1779269503.758144_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9993,
+        "time": "2026-05-20 11:31:43.839643",
+        "image_url": "/uploads/1779269503.758144_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779269631.642919_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9996,
+        "time": "2026-05-20 11:33:51.817485",
+        "image_url": "/uploads/1779269631.642919_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779269790.236951_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9562,
+        "time": "2026-05-20 11:36:30.416704",
+        "image_url": "/uploads/1779269790.236951_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779356838.132606_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9547,
+        "time": "2026-05-21 11:47:18.422153",
+        "image_url": "/uploads/1779356838.132606_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357099.131105_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.8301,
+        "time": "2026-05-21 11:51:39.245030",
+        "image_url": "/uploads/1779357099.131105_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357189.220073_drawing.png",
+        "prediction": "review_required",
+        "confidence": 0.7122,
+        "time": "2026-05-21 11:53:09.312655",
+        "image_url": "/uploads/1779357189.220073_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357251.979616_drawing.png",
+        "prediction": "review_required",
+        "confidence": 0.5213,
+        "time": "2026-05-21 11:54:12.082954",
+        "image_url": "/uploads/1779357251.979616_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357305.489104_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9547,
+        "time": "2026-05-21 11:55:05.659950",
+        "image_url": "/uploads/1779357305.489104_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357363.416952_drawing.png",
+        "prediction": "review_required",
+        "confidence": 0.6593,
+        "time": "2026-05-21 11:56:03.534192",
+        "image_url": "/uploads/1779357363.416952_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357533.839086_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9967,
+        "time": "2026-05-21 11:58:53.964306",
+        "image_url": "/uploads/1779357533.839086_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357710.507996_middle.webp",
+        "prediction": "safe",
+        "confidence": 0.9999,
+        "time": "2026-05-21 12:01:51.139037",
+        "image_url": "/uploads/1779357710.507996_middle.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357727.686465_middle2.webp",
+        "prediction": "safe",
+        "confidence": 0.9782,
+        "time": "2026-05-21 12:02:07.812760",
+        "image_url": "/uploads/1779357727.686465_middle2.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357741.869216_middle3.jpg",
+        "prediction": "safe",
+        "confidence": 0.9705,
+        "time": "2026-05-21 12:02:22.066854",
+        "image_url": "/uploads/1779357741.869216_middle3.jpg",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779357829.968972_middle4.webp",
+        "prediction": "safe",
+        "confidence": 0.999,
+        "time": "2026-05-21 12:03:50.137187",
+        "image_url": "/uploads/1779357829.968972_middle4.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779358392.497077_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9986,
+        "time": "2026-05-21 12:13:12.723414",
+        "image_url": "/uploads/1779358392.497077_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779358444.575058_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9994,
+        "time": "2026-05-21 12:14:04.690912",
+        "image_url": "/uploads/1779358444.575058_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779358772.529209_haak.webp",
+        "prediction": "safe",
+        "confidence": 0.9979,
+        "time": "2026-05-21 12:19:32.656403",
+        "image_url": "/uploads/1779358772.529209_haak.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779358788.046436_haak2.webp",
+        "prediction": "safe",
+        "confidence": 0.9889,
+        "time": "2026-05-21 12:19:48.232546",
+        "image_url": "/uploads/1779358788.046436_haak2.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779359077.846873_drawing.png",
+        "prediction": "unsafe",
+        "confidence": 0.9987,
+        "time": "2026-05-21 12:24:37.966465",
+        "image_url": "/uploads/1779359077.846873_drawing.png",
+        "reviewed": false,
+        "corrected_label": null
+    },
+    {
+        "filename": "1779359103.305639_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.9846,
+        "time": "2026-05-21 12:25:03.410936",
+        "image_url": "/uploads/1779359103.305639_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779359368.976427_pistol.webp",
+        "prediction": "unsafe",
+        "confidence": 0.9815,
+        "time": "2026-05-21 12:29:29.087593",
+        "image_url": "/uploads/1779359368.976427_pistol.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779359426.431641_pistol2.webp",
+        "prediction": "safe",
+        "confidence": 0.9999,
+        "time": "2026-05-21 12:30:26.524703",
+        "image_url": "/uploads/1779359426.431641_pistol2.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779359449.329494_pistol3.webp",
+        "prediction": "safe",
+        "confidence": 0.7764,
+        "time": "2026-05-21 12:30:49.433172",
+        "image_url": "/uploads/1779359449.329494_pistol3.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779359552.412944_drawing.png",
+        "prediction": "review_required",
+        "confidence": 0.6882,
+        "time": "2026-05-21 12:32:32.545192",
+        "image_url": "/uploads/1779359552.412944_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779360623.048046_pe.jpg",
+        "prediction": "review_required",
+        "confidence": 0.5353,
+        "time": "2026-05-21 12:50:23.156747",
+        "image_url": "/uploads/1779360623.048046_pe.jpg",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779360668.843884_pe2.jpg",
+        "prediction": "safe",
+        "confidence": 0.9521,
+        "time": "2026-05-21 12:51:09.073274",
+        "image_url": "/uploads/1779360668.843884_pe2.jpg",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779360708.853784_pe3.png",
+        "prediction": "safe",
+        "confidence": 0.9743,
+        "time": "2026-05-21 12:51:48.985302",
+        "image_url": "/uploads/1779360708.853784_pe3.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779360723.050621_Pe4.webp",
+        "prediction": "safe",
+        "confidence": 0.9999,
+        "time": "2026-05-21 12:52:03.145605",
+        "image_url": "/uploads/1779360723.050621_Pe4.webp",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779362089.133137_drawing.png",
+        "prediction": "unsafe",
+        "confidence": 0.8305,
+        "time": "2026-05-21 13:14:49.307648",
+        "image_url": "/uploads/1779362089.133137_drawing.png",
+        "reviewed": true,
+        "corrected_label": "unsafe"
+    },
+    {
+        "filename": "1779362279.233132_drawing.png",
+        "prediction": "safe",
+        "confidence": 0.8271,
+        "time": "2026-05-21 13:17:59.372355",
+        "image_url": "/uploads/1779362279.233132_drawing.png",
+        "reviewed": false,
+        "corrected_label": null
+    }
+]
